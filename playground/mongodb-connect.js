@@ -30,7 +30,7 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
 
   const db = client.db('Users');
 
-  db.collection('Users').insertOne({
+  db.collection('Users').insertOne({    
     name: 'Andrew',
     age: 25,
     location: 'Philadelphia'
@@ -40,7 +40,7 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
       return console.log('Unable to insert user');
     } // End of if (err)
 
-    console.log(result.ops);
+    console.log(result.ops[0]._id.getTimestamp());
 
   }); // End of db.collection('Users').insertOne({
 
