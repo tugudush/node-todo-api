@@ -4,7 +4,7 @@ const {MongoClient, ObjectID} = require('mongodb');
 var obj = new ObjectID();
 console.log('test object id:', obj);
 
-var url = 'mongodb://localhost:27017/TodoApp';
+var url = 'mongodb://localhost:27017';
 
 MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
   
