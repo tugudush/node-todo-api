@@ -21,9 +21,13 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
   //   console.log(result);
   // }); // End of db.collection('Todos').deleteOne({text: 'eat shit'}).then((result) => {
 
-  db.collection('Todos').findOneAndDelete({completed: true}).then((result) => {
+  // db.collection('Todos').findOneAndDelete({completed: true}).then((result) => {
+  //   console.log(result);
+  // }); // End of db.collection('Todos').findOneAndDelete({completed: true}).then((result) => {
+
+  db.collection('Todos').findOneAndDelete({_id: ObjectID("5bfe8371e9214e6af67cfcd3")}).then((result) => {
     console.log(result);
-  }); // End of db.collection('Todos').findOneAndDelete({completed: true}).then((result) => {
+  }); // End of db.collection('Todos').findOneAndDelete({_id: ObjectId("5bfe8371e9214e6af67cfcd3")}).then((result) => {
 
   //client.close();
 
