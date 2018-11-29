@@ -13,11 +13,26 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
 
   const db = client.db('TodoApp'); 
   
-  db.collection('Todos').findOneAndUpdate({
-    _id: ObjectID('5bfd736ee9214e6af67cf8ec')
+  // db.collection('Todos').findOneAndUpdate({
+  //   _id: ObjectID('5bfd736ee9214e6af67cf8ec')
+  // }, {
+  //   $set: {
+  //     text: 'fap all night'
+  //   }
+  // }, {
+  //   returnOriginal: false
+  // }).then((result) => {
+  //   console.log(result);
+  // });
+
+  db.collection('Users').findOneAndUpdate({
+    name: 'Jerome'
   }, {
     $set: {
-      text: 'fap all night'
+      name: 'Jonathan'
+    },
+    $inc: {
+      age: 1
     }
   }, {
     returnOriginal: false
