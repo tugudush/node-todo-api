@@ -5,34 +5,28 @@ var {mongoose} = require('./db/mongoose');
 var {Todo} = require('./models/todo');
 var {User} = require('./models/user');
 
-// var newTodo = new Todo({
-//   text: 'quickie',
-//   completed: true  
-// }); // End of var newTodo = new Todo({
+var app = express();
 
-// if (newTodo.completed) {
-//   if (!newTodo.completedAt) {
-//     newTodo.completedAt = Date.now();
-//   } // End of if (!newTodo.completedAt)
-// } // End of if (newTodo.completed)
+// Setting up basic middleware for all Express requests
+//app.use(bodyParser.urlencoded({ extended: true })); // Parses urlencoded bodies
+app.use(bodyParser.json());
 
-//console.log(JSON.stringify(newTodo, null, 2));
+// app.get('/', (req, res) => {
+//   res.send('hello shit!');
+// });
 
-// newTodo.save().then((doc) => {
-//   console.log('Saved todo', JSON.stringify(doc, null, 2));
-// }, (error) => {
-//   console.log('Unable to save todo');
-//   console.log(error);
-// }); // End of newTodo.save().then((doc) => {
+app.post('/todos', (req, res) => {
+  var todo = new Todo({
+    text: req.body.text
+  });
 
-// var user = new User({
-//   name: 'Jerome',
-//   email: 'jerome2kph@gmail.com'
-// }); // End of var user = new User({
+  todo.save().then((doc) => {
+    res.send(doc);
+  }, (e) => {
+    res.status(400).send(e);
+  });
+}); // End of app.post('/todos', (req, res) => {
 
-// user.save().then((doc) => {
-//   console.log('Saved user', JSON.stringify(doc, null, 2));
-// }, (error) => {
-//   console.log('Unable to save user');
-//   console.log(error);
-// }); // End of user.save().then((doc) => {
+app.listen(3000, () => {
+  console.log('Started on port 3000');
+});

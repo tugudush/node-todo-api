@@ -15,8 +15,6 @@ var Todo = mongoose.model('Todo', {
     type: Number,
     default: null
   }
-}); // End of var Todo = mongoose.model('Todo', {
+});
 
-module.exports = {
-  Todo
-};
+module.exports = {Todo};
